@@ -2,10 +2,10 @@ package com.cgi.model;
 
 public class Artist {
 
-    public String firstName;
-    public String lastName;
-    public int age;
-    public String stageName;
+    private String firstName;
+    private String lastName;
+    private int age;
+    private String stageName;
 
   /**
    *  Réecriture du constructeur par défault
@@ -18,9 +18,7 @@ public class Artist {
     }
 
     public Artist(String firstName, String lastName, int age, String stageName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
+        this(firstName, lastName, age);
         this.stageName = stageName;
     }
 
@@ -28,7 +26,7 @@ public class Artist {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.stageName = this.firstName + " " + this.lastName;
+        this.stageName = this.stageName == null ?  this.firstName + " " + this.lastName : this.stageName;
     }
 
     public  void displayInfos(){
@@ -47,4 +45,39 @@ public class Artist {
         this.stageName =  this.firstName + " " + this.lastName;
     }
 
+    public void performWith(Artist artist) {
+        System.out.println(this.stageName + " allume le feu avec " + artist.stageName);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getStageName() {
+        return stageName;
+    }
+
+    public void setStageName(String stageName) {
+        this.stageName = stageName;
+    }
 }
