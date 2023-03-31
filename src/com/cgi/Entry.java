@@ -3,20 +3,27 @@ package com.cgi;
 import com.cgi.model.bank.Employee;
 import com.cgi.model.zik.Album;
 import com.cgi.model.zik.Artist;
+import com.cgi.parking.Car;
+import com.cgi.parking.Parking;
 
 public class Entry {
 
     public static void main(String[] args) {
-        Employee e1 = new Employee("Jeremy", 1000); // fn, sl
-        Employee e2 = new Employee("Richard", 1000);// fn, sl
+        Car c1 = new Car("ABCD", "Peugeot", 698);
+        Car c2 = new Car("EFGH", "Renault", -24);
+        Car c3 = new Car("IJKL", "Peugeot", 100);
 
-        e1.setSalary(2100);
-        e2.setSalary(2200);
+        Parking p1 = new Parking("Quinconces", "Bordeaux");
+        p1.add(c1);
+        p1.add(c2);
+        p1.add(c3);
 
-        Employee.setMinSalary(4000);
+        System.out.println(p1.countByBrand("Peugeot"));
 
-        e1.setSalary(2100);
-        e2.setSalary(2200);
+    }
+
+    public static void ex1(){
+        System.out.println("hello");
     }
 
 }
