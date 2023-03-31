@@ -1,23 +1,22 @@
 package com.cgi;
 
-import com.cgi.model.Artist;
-import com.cgi.model.bank.BankInfo;
-import com.cgi.model.bank.Company;
 import com.cgi.model.bank.Employee;
-import com.cgi.model.bank.Status;
+import com.cgi.model.zik.Album;
+import com.cgi.model.zik.Artist;
 
 public class Entry {
 
     public static void main(String[] args) {
-        Status st = new Status(1953);
-        Employee employee1 = new Employee(1, "Jean", "Jean", 3000, new BankInfo("ABHF33421", "bank"), st);
-        Employee employee2 = new Employee(1, "Jean", "Jean", 3000, new BankInfo("DBKD345234", "bank"), st);
+        Employee e1 = new Employee("Jeremy", 1000); // fn, sl
+        Employee e2 = new Employee("Richard", 1000);// fn, sl
 
-        Company c = new Company("Amazon");
-        c.add(employee1);
-        c.add(employee2);
+        e1.setSalary(2100);
+        e2.setSalary(2200);
 
-        System.out.println(c);
+        Employee.setMinSalary(4000);
+
+        e1.setSalary(2100);
+        e2.setSalary(2200);
     }
 
 }

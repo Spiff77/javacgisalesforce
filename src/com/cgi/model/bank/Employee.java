@@ -3,6 +3,7 @@ package com.cgi.model.bank;
 public class Employee {
 
     private int id;
+    private static int minSalary = 2000;
     private String firstName;
     private String lastName;
     private float salary;
@@ -16,6 +17,10 @@ public class Employee {
         this.salary = salary;
         this.bankInfo = bankInfo;
         this.status = status;
+    }
+    public Employee(String firstName, int salary) {
+        this.firstName = firstName;
+        this.setSalary(salary);
     }
 
     public int getId() {
@@ -47,7 +52,7 @@ public class Employee {
     }
 
     public void setSalary(float salary) {
-        this.salary = salary;
+        this.salary = salary < minSalary ? minSalary : salary;
     }
 
     public BankInfo getBankInfo() {
@@ -64,6 +69,14 @@ public class Employee {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public static int getMinSalary() {
+        return minSalary;
+    }
+
+    public static void setMinSalary(int minSalary) {
+        Employee.minSalary = minSalary;
     }
 
     @Override
