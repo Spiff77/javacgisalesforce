@@ -1,6 +1,6 @@
 package parking;
 
-import com.cgi.model.parking.Vehicule;
+import parking.Vehicule;
 
 import java.util.Arrays;
 
@@ -22,10 +22,18 @@ public class Parking {
         }
     }
 
-    public void startAllVehicules(){
+    public void testAllVehicules(){
         for (Vehicule v: vehicules) {
-            if(v != null)
+            if(v != null){
                 v.start();
+                if(v instanceof Boat){
+                    ((Boat) v).sail();
+                }
+                else if(v instanceof Plane){
+                    ((Plane) v).fly();
+                }
+                v.stop();
+            }
         }
     }
 

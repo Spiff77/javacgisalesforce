@@ -11,6 +11,11 @@ public class Truck extends Vehicule{
 
     @Override
     public void start() {
-        System.out.println("Le camion "+ model +"  démarre");
+        System.out.println("Le camion "+ brand +"  démarre");
+    }
+
+    @Override
+    public void stop() {
+        System.out.println("Le camion "+ brand +"  s'arrete");
     }
 }

@@ -1,19 +1,23 @@
 package com.cgi;
 
 import com.cgi.restaurant.*;
+import parking.Boat;
+import parking.Car;
+import parking.Parking;
+import parking.Plane;
 
 public class Entry {
 
     public static void main(String[] args) {
 
-        Order o = new Order("Commande 1", Drink.COKE, MainCourse.SALAD, Dessert.BABA);
-        Order o1 = new Order("Commande 2", Drink.COKE, MainCourse.SALAD, Dessert.BABA);
-        Restaurant r = new Restaurant("Flunch");
+        Parking p1 = new Parking("dfsd");
 
-        r.add(o);
-        r.add(o1);
+        p1.add(new Plane("Airbus"));
+        p1.add(new Plane("Boeing"));
+        p1.add(new Car("Peugeot", 43));
+        p1.add(new Boat("marquedebateau"));
 
-        r.displayTotalPrice();
+        p1.testAllVehicules();
     }
 
 }
