@@ -5,6 +5,8 @@ import com.cgi.utils.Clavier;
 
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class MyEntry {
 
@@ -12,15 +14,20 @@ public class MyEntry {
 
         HashMap<Orc, List<Orc>> teams = new HashMap<>();
 
-        teams.put(new Orc("sfdz", 23, 23), Arrays.asList(new Orc("sdgfds", 20, 39), new Orc("gdfg", 20, 39)));
-        teams.put(new Orc("hrzh", 23, 23), Arrays.asList(new Orc("sdgeffds", 20, 39), new Orc("gdaffg", 20, 39)));
+        teams.put(new Orc("sfdz", 23, 20), Arrays.asList(new Orc("sdgfds", 10, 39), new Orc("gdfg", 15, 39)));
+        teams.put(new Orc("hrzh", 20, 23), Arrays.asList(new Orc("sdgeffds", 20, 39), new Orc("gdaffg", 20, 39)));
+        AtomicInteger atomicInteger = new AtomicInteger(1);
+        List<String> result = teams.entrySet().stream()
+                .mapToInt( e ->
+                        e.getKey().getHealth() + e.getValue().stream()
+                            .mapToInt( v -> v.getHealth()).sum())
+                .boxed()
+                .map(v -> {
+                   return "Equipe "+atomicInteger.getAndIncrement()+ ": " + v;
+                })
+                .collect(Collectors.toList());
 
-        int i = 0;
-        for (Entry<Orc, List<Orc>> entry: teams.entrySet()){
-            System.out.println("Chef equipe " + (++i) + ": " +entry.getKey().getName());
-            for (Orc o: entry.getValue()) {
-                System.out.println("\t "+o.getName());
-            }
-        }
+
+        System.out.println(result);
     }
 }
