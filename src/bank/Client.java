@@ -20,10 +20,6 @@ public class Client {
         this.comptes.add(compte);
     }
 
-    public float calculsTotalAvoirs(){
-        return (float) comptes.stream().mapToDouble(c -> c.solde).sum();
-    }
-
     public Client(String firstName) {
         this.firstName = firstName;
     }
